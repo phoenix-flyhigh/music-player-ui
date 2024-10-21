@@ -5,7 +5,7 @@ const fs = require("fs")
 const PORT = 8080
 
 const app = express()
-const staticPath = path.join(__dirname, "/public")
+const staticPath = path.join(__dirname, "../public")
 
 app.use(express.static(staticPath))
 
@@ -25,19 +25,19 @@ const getJsonDataFromFile = (filePath, res) => {
 }
 
 app.get("/artists", (_, res) => {
-    const filePath = path.join(__dirname, "data/artists.json")
+    const filePath = path.join(__dirname, "../data/artists.json")
 
     getJsonDataFromFile(filePath, res)
 })
 
 app.get("/albums", (_, res) => {
-    const filePath = path.join(__dirname, "data/albums.json")
+    const filePath = path.join(__dirname, "../data/albums.json")
 
     getJsonDataFromFile(filePath, res)
 })
 
 app.get("/charts", (_, res) => {
-    const filePath = path.join(__dirname, "data/charts.json")
+    const filePath = path.join(__dirname, "../data/charts.json")
 
     getJsonDataFromFile(filePath, res)
 })
