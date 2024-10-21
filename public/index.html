@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static site</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+</head>
+
+<body class="flex flex-col bg-black text-white overflow-none h-screen w-screen text-md">
+
+    <section class="h-12 flex justify-between items-center pl-6">
+        <a href="/">
+            <img src="assets/music.svg" class="invert" alt="app-icon" />
+        </a>
+        <section class="flex items-center gap-4">
+            <button class="rounded-lg bg-gray-700 flex justify-between border-none m-0 p-3">
+                <img src="assets/home.svg" class="invert" alt="home" />
+            </button>
+            <div class="bg-gray-700 rounded-lg py-3 px-4 justify-center items-center flex gap-4 h-6 w-32 search-bar">
+                <button class="bg-none border-none m-0 p-0">
+                    <img src="assets/search.svg" class="invert" alt="search" />
+                </button>
+                <input id="search" type="text" placeholder="What do you want to play?"
+                    class="p-1 w-full border-none bg-none text-white outline-none text-md" />
+                <button class="flex justify-center items-center border-left-2 pl-2 bg-none border-none m-0 p-0">
+                    <img src="assets/browse.svg" class="invert" alt="browse" />
+                </button>
+            </div>
+
+        </section>
+        <section class="flex gap-6">
+            <button class="border-none bg-none text-gray">Sign up</button>
+            <button class="rounded-lg p-4 w-12 font-weight-500 text-md">Log in</button>
+        </section>
+    </section>
+
+    <main class="flex flex-1 gap-2 px-2 h-max">
+
+        <section class="w-1-4 flex flex-col justify-between gap-4 bg-gray-900 rounded-sm p-4 pl-6">
+            <section class="flex flex-col gap-4">
+                <div class="flex items-center justify-between w-full mb-4">
+                    <div class="flex gap-4 items-center">
+                        <img src="assets/library.svg" class="invert" alt="library" />
+                        <p class="m-0 text-lightgray font-weight-700">Your Library</>
+                    </div>
+                <button class="bg-none border-none m-0 p-0">
+                    <img src="assets/plus.svg" class="invert" alt="library" />
+                </button>
+                </div>
+                <div class="bg-gray-700 rounded-sm p-4">
+                    <p class="font-weight-500 m-0">Create your first playlist</p>
+                    <p class="description text-sm">It's easy, we'll help you</p>
+                    <button class="rounded-lg px-4 py-2 font-weight-700 text-sm">Create your playlist</button>
+                </div>
+                <div class="bg-gray-700 rounded-sm p-4">
+                    <p class="font-weight-500 m-0">Lets find some podcasts to follow</p>
+                    <p class="description text-sm">We'll keep you updated on new episodes</p>
+                    <button class="rounded-lg px-4 py-2 font-weight-700 text-sm">Browse podcasts</button>
+                </div>
+            </section>
+            <section class="flex flex-wrap gap-4 items-center text-gray text-sm mr-8">
+                <a href="/">Legal</a>
+                <a href="/">Safety & Privacy center</a>
+                <a href="/">Privacy</a>
+                <a href="/">Cookies</a>
+                <a href="/">About Ads</a>
+                <a href="/">Accessibility</a>
+            </section>
+        </section>
+
+        <div id="main-content" class="flex flex-col gap-6 w-full py-5 px-2 bg-gradient rounded-md overflow-y-scroll">
+            <section class="flex flex-col gap-1 p-2">
+                <div class="flex justify-between items-center px-6">
+                    <h2 class="m-0">Popular artists</h2>
+                    <a href="/" class="text-white hover-underline">Show all</a>
+                </div>
+                <section class="flex justify-between flex-nowrap" id="popular-artists">
+                </section>
+            </section>
+            <section class="flex flex-col gap-1 p-2">
+                <div class="flex justify-between items-center px-6">
+                    <h2 class="m-0">Popular albums</h2>
+                    <a href="/" class="text-white hover-underline">Show all</a>
+                </div>
+                <section class="flex justify-between flex-nowrap" id="popular-albums">
+                </section>
+            </section>
+            <section class="flex flex-col gap-1 p-2">
+                <div class="flex justify-between items-center px-6">
+                    <h2 class="m-0">Featured Charts</h2>
+                    <a href="/" class="text-white hover-underline">Show all</a>
+                </div>
+                <section class="flex justify-between flex-nowrap" id="featured-charts">
+                </section>
+            </section>
+
+            <section class="p-4 flex justify-between w-full items-start my-4">
+                <section class="flex justify-between w-2-3">
+                    <section class="flex flex-col gap-4">
+                        <span class="font-weight-700">Company</span>
+                        <a href="/">About</a>
+                        <a href="/">Jobs</a>
+                        <a href="/">For the records</a>
+                    </section>
+                    <section class="flex flex-col gap-4">
+                        <span class="font-weight-700">Communities</span>
+                        <a href="/">For Artists</a>
+                        <a href="/">Developers</a>
+                        <a href="/">Advertising</a>
+                        <a href="/">Investors</a>
+                        <a href="/">Vendors</a>
+                    </section>
+                    <section class="flex flex-col gap-4">
+                        <span class="font-weight-700">Useful links</span>
+                        <a href="/">Support</a>
+                        <a href="/">Free Mobile App</a>
+                    </section>
+                    <section class="flex flex-col gap-4">
+                        <span class="font-weight-700">Spotify Plans</span>
+                        <a href="/">Premium Individual</a>
+                        <a href="/">Premium Duo</a>
+                        <a href="/">Premium Family</a>
+                        <a href="/">Premium Student</a>
+                        <a href="/">Spotify Free</a>
+                    </section>
+                </section>
+
+                <section class="flex gap-4 items-center justify-start">
+                    <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
+                        <img src="assets/instagram.svg" class="invert" alt="home" />
+                    </button>
+                    <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
+                        <img src="assets/X.svg" class="invert" alt="home" />
+                    </button>
+                    <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
+                        <img src="assets/facebook.svg" class="invert" alt="home" />
+                    </button>
+                </section>
+
+            </section>
+        </div>
+    </main>
+
+    <section class="flex justify-between bottom-0 items-center text-white h-12 footer-gradient px-4">
+        <div class="flex flex-col">
+            <p class="m-0 font-weight-700 text-lg">Preview of Spotify</p>
+            <span class="text-md">Sign up to get unlimited songs and podcasts with occasional ads. No credit card
+                needed</span>
+        </div>
+        <button id="preview" class="rounded-lg py-2 text-md px-4 font-weight-700">Checkout preview</button>
+    </section>
+
+    <script src="index.js" async type="module"></script>
+</body>
+
+</html>

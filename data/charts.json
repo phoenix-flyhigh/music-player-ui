@@ -1,0 +1,22 @@
+[
+    {
+        "name": "top-50-global",
+        "url": "assets/top-50-images/top-50-global.jpeg"
+    },
+    {
+        "name": "top-50-india",
+        "url": "assets/top-50-images/top-50-india.jpeg"
+    },
+    {
+        "name": "top-songs-global",
+        "url": "assets/top-50-images/top-songs-global.png"
+    },
+    {
+        "name": "top-50-streamed",
+        "url": "assets/top-50-images/top-50-streamed.jpeg"
+    },
+    {
+        "name": "top-songs-india",
+        "url": "assets/top-50-images/top-songs-india.png"
+    }
+]
