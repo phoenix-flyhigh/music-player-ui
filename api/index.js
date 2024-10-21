@@ -46,3 +46,5 @@ app.listen(PORT, () => {
     console.log("Listening at 8080")
 })
 
+module.exports = app
+
