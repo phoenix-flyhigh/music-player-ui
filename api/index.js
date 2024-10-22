@@ -42,9 +42,11 @@ app.get("/charts", (_, res) => {
     getJsonDataFromFile(filePath, res)
 })
 
-app.listen(PORT, () => {
-    console.log("Listening at 8080")
-})
+if (require.main === module) {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
 
-module.exports = app
-
+module.exports = app;
