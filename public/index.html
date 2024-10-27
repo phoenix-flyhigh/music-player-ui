@@ -46,9 +46,9 @@
                         <img src="assets/library.svg" class="invert" alt="library" />
                         <p class="m-0 text-lightgray font-weight-700">Your Library</>
                     </div>
-                <button class="bg-none border-none m-0 p-0">
-                    <img src="assets/plus.svg" class="invert" alt="library" />
-                </button>
+                    <button class="bg-none border-none m-0 p-0">
+                        <img src="assets/plus.svg" class="invert" alt="library" />
+                    </button>
                 </div>
                 <div class="bg-gray-700 rounded-sm p-4">
                     <p class="font-weight-500 m-0">Create your first playlist</p>
@@ -128,15 +128,15 @@
                     </section>
                 </section>
 
-                <section class="flex gap-4 items-center justify-start">
+                <section class="flex gap-4 items-center justify-start mr-8">
                     <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
-                        <img src="assets/instagram.svg" class="invert" alt="home" />
+                        <img src="assets/instagram.svg" class="invert" alt="instagram" />
                     </button>
                     <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
-                        <img src="assets/X.svg" class="invert" alt="home" />
+                        <img src="assets/X.svg" class="invert" alt="X-twitter" />
                     </button>
                     <button class="rounded-lg bg-gray-500 flex justify-between items-center p-3 border-none">
-                        <img src="assets/facebook.svg" class="invert" alt="home" />
+                        <img src="assets/facebook.svg" class="invert" alt="facebook" />
                     </button>
                 </section>
 
@@ -144,13 +144,56 @@
         </div>
     </main>
 
-    <section class="flex justify-between bottom-0 items-center text-white h-12 footer-gradient px-4">
+    <section class="flex justify-between bottom-0 items-center text-white h-12 footer px-4 py-2">
         <div class="flex flex-col">
             <p class="m-0 font-weight-700 text-lg">Preview of Spotify</p>
             <span class="text-md">Sign up to get unlimited songs and podcasts with occasional ads. No credit card
                 needed</span>
         </div>
-        <button id="preview" class="rounded-lg py-2 text-md px-4 font-weight-700">Checkout preview</button>
+        <button id="preview" class="rounded-lg py-2 text-md px-4 font-weight-700">See preview</button>
+    </section>
+    <section class="hidden justify-center bottom-0 items-center text-white loader h-12 px-4 py-2">
+        Loading tracks...
+    </section>
+    <section class="hidden justify-between bottom-0 items-center text-white h-12 player px-4 py-2">
+        <div class="flex gap-2 items-center justify-center">
+            <img id="track-image" src="" alt="song-image" class="w-8 h-8 rounded-sm" />
+            <div class="flex flex-col gap-2 justify-left">
+                <span id="track-name"></span>
+                <span id="track-artist"></span>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center gap-1">
+            <div class="flex gap-4 items-center justify-center">
+                <button id="play-btn" class="flex justify-center items-center p-1 border-none bg-white rounded-lg">
+                    <img src="assets/play.svg" alt="play" />
+                </button>
+                <button id="pause-btn" class="hidden justify-center items-center p-1 border-none bg-white rounded-lg">
+                    <img src="assets/pause.svg" alt="pause" />
+                </button>
+            </div>
+            <div class="flex gap-4 items-center">
+                <span id="elapsed-time">00:00</span>
+                <span id="track-bar" class="relative w-40 progress-bar">
+                    <span id="track-progress" class="absolute filled-progress-bar w-0">
+                    </span>
+                    <span id="track-notch" class="absolute circle left-0"></span>
+                </span>
+                <span id="total-time">00:30</span>
+            </div>
+        </div>
+        <div class="flex gap-4 items-center">
+            <button id="volume-btn" class="relative flex justify-center items-center bg-none border-none m-0 p-4">
+                <img src="assets/high-volume.svg" alt="high-volume" class="absolute show high-vol invert"/>
+                <img src="assets/low-volume.svg" alt="low-volume" class="absolute hide low-vol invert"/>
+                <img src="assets/zero-volume.svg" alt="zero-volume" class="absolute hide zero-vol invert"/>
+            </button>
+            <span id="volume-bar" class="relative w-12 progress-bar">
+                <span id="volume-progress" class="absolute filled-progress-bar w-full">
+                </span>
+                <span id="volume-notch" class="absolute circle left-full"></span>
+            </span>
+        </div>
     </section>
 
     <script src="index.js" async type="module"></script>
