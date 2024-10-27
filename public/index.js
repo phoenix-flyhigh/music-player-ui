@@ -85,7 +85,7 @@
             />
             <p class="m-0 text-lg">${artist.name}</p>
             <span class="text-lightgray">Artist</span>
-            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-3 play-btn hidden right-4 bg-green rounded-lg">
+            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-3 play-btn hide right-4 bg-green rounded-lg">
                 <img src="assets/play.svg" class="" alt="browse" />
             </button>
         `;
@@ -115,7 +115,7 @@
             />
             <p class="m-0 text-lg">${album.name}</p>
             <span class="text-lightgray">${album.artist}</span>
-            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-4 play-btn hidden right-6 bg-green rounded-lg">
+            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-4 play-btn hide right-6 bg-green rounded-lg">
                 <img src="assets/play.svg" class="" alt="browse" />
             </button>
         `;
@@ -146,7 +146,7 @@
                 alt=${chart.name}
             />
             <p class="max-w-24 text-lightgray">Your daily update of he most played tracks right now</p>
-            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-3 play-btn hidden right-6 bg-green rounded-lg">
+            <button id="play-btn" class="absolute flex justify-center items-center p-3 bottom-1-3 play-btn hide right-6 bg-green rounded-lg">
                 <img src="assets/play.svg" class="" alt="browse" />
             </button>
         `;

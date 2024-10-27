@@ -512,3 +512,26 @@ button {
 .hide {
     opacity: 0;
 }
+
+.home:hover > .tooltip {
+    opacity: 1;
+}
+
+.search:hover > .tooltip {
+    opacity: 1;
+}
+
+.browse:hover > .tooltip {
+    opacity: 1;
+}
+
+.tooltip {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    opacity: 0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgb(18, 18, 18);
+    color: #fff;
+}
