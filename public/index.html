@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static site</title>
+    <title>Music player clone</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 </head>
 
 <body class="flex flex-col bg-black text-white overflow-none h-screen w-screen text-md">
 
-    <section class="h-12 flex justify-between items-center pl-6 pr-2">
+    <section class="relative flex justify-between items-center pl-6 pr-2 py-2">
         <a href="/">
             <img src="assets/music.svg" class="invert" alt="app-icon" />
         </a>
-        <section class="flex items-center gap-4">
+        <section class="absolute-center flex items-center gap-4">
             <button class="home relative rounded-lg bg-gray-700 flex justify-between border-none m-0 p-3">
                 <img src="assets/home.svg" class="invert" alt="home" />
                 <p class="tooltip">Home</p>
@@ -27,7 +27,8 @@
                 </button>
                 <input id="search" type="text" placeholder="What do you want to play?"
                     class="p-1 w-full border-none bg-none text-white outline-none text-md" />
-                <button class="browse relative flex justify-center items-center border-left-2 pl-2 bg-none border-none m-0 p-0">
+                <button
+                    class="browse relative flex justify-center items-center border-left-2 pl-2 bg-none border-none m-0 p-0">
                     <img src="assets/browse.svg" class="invert" alt="browse" />
                     <p class="tooltip">Browse</p>
                 </button>
@@ -142,7 +143,6 @@
                         <img src="assets/facebook.svg" class="invert" alt="facebook" />
                     </button>
                 </section>
-
             </section>
         </div>
     </main>
@@ -158,7 +158,7 @@
     <section class="hidden justify-center bottom-0 items-center text-white loader h-12 px-4 py-2">
         Loading tracks...
     </section>
-    <section class="hidden justify-between bottom-0 items-center text-white h-12 player px-4 py-2">
+    <section class="relative hidden justify-between bottom-0 items-center text-white h-12 player px-4 py-2">
         <div class="flex gap-2 items-center justify-center">
             <img id="track-image" src="" alt="song-image" class="w-8 h-8 rounded-sm" />
             <div class="flex flex-col gap-2 justify-left">
@@ -166,7 +166,7 @@
                 <span id="track-artist"></span>
             </div>
         </div>
-        <div class="flex flex-col justify-center items-center gap-1">
+        <div class="absolute-center flex flex-col justify-center items-center gap-1">
             <div class="flex gap-4 items-center justify-center">
                 <button id="play-btn" class="flex justify-center items-center p-1 border-none bg-white rounded-lg">
                     <img src="assets/play.svg" alt="play" />
@@ -187,9 +187,9 @@
         </div>
         <div class="flex gap-4 items-center">
             <button id="volume-btn" class="relative flex justify-center items-center bg-none border-none m-0 p-4">
-                <img src="assets/high-volume.svg" alt="high-volume" class="absolute show high-vol invert"/>
-                <img src="assets/low-volume.svg" alt="low-volume" class="absolute hide low-vol invert"/>
-                <img src="assets/zero-volume.svg" alt="zero-volume" class="absolute hide zero-vol invert"/>
+                <img src="assets/high-volume.svg" alt="high-volume" class="absolute show high-vol invert" />
+                <img src="assets/low-volume.svg" alt="low-volume" class="absolute hide low-vol invert" />
+                <img src="assets/zero-volume.svg" alt="zero-volume" class="absolute hide zero-vol invert" />
             </button>
             <span id="volume-bar" class="relative w-12 progress-bar">
                 <span id="volume-progress" class="absolute filled-progress-bar w-full">

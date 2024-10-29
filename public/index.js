@@ -66,6 +66,8 @@
 
   const showArtists = (artistData) => {
     const artistSection = document.getElementById("popular-artists");
+    const fragment = document.createDocumentFragment();
+
     artistData.forEach((artist) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -90,12 +92,15 @@
             </button>
         `;
 
-      artistSection.appendChild(element);
+      fragment.appendChild(element);
     });
+    artistSection.appendChild(fragment);
   };
 
   const showAlbums = (albumData) => {
     const albumSection = document.getElementById("popular-albums");
+    const fragment = document.createDocumentFragment();
+
     albumData.forEach((album) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -120,12 +125,15 @@
             </button>
         `;
 
-      albumSection.appendChild(element);
+      fragment.appendChild(element);
     });
+    albumSection.appendChild(fragment);
   };
 
   const showCharts = (chartsData) => {
     const chartsSection = document.getElementById("featured-charts");
+    const fragment = document.createDocumentFragment();
+
     chartsData.forEach((chart) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -151,8 +159,9 @@
             </button>
         `;
 
-      chartsSection.appendChild(element);
+      fragment.appendChild(element);
     });
+    chartsSection.appendChild(fragment);
   };
 
   const adjustVisibleImages = () => {
@@ -197,20 +206,24 @@
   const playBtn = document.getElementById("play-btn");
   const pauseBtn = document.getElementById("pause-btn");
 
+  const showTrackPlayStatus = (statusBtn) => {
+    playBtn.classList.add("hidden")
+    pauseBtn.classList.add("hidden")
+    
+    statusBtn.classList.remove("hidden");
+    statusBtn.classList.add("flex");
+  }
+
   playBtn?.addEventListener("click", () => {
     if (currentTrackToPlay.src) {
-      playBtn.classList.add("hidden");
-      pauseBtn.classList.remove("hidden");
-      pauseBtn.classList.add("flex");
+      showTrackPlayStatus(pauseBtn)
       currentTrackToPlay.play();
     }
   });
 
   pauseBtn?.addEventListener("click", () => {
     if (currentTrackToPlay.src) {
-      playBtn.classList.remove("hidden");
-      playBtn.classList.add("flex");
-      pauseBtn.classList.add("hidden");
+      showTrackPlayStatus(playBtn)
       currentTrackToPlay.pause();
     }
   });
@@ -331,9 +344,7 @@
     if (currentTrackId != 0) {
       currentTrackToPlay.play();
     } else {
-      pauseBtn.classList.add("hidden");
-      playBtn.classList.remove("hidden");
-      playBtn.classList.add("flex");
+      showTrackPlayStatus(playBtn)
     }
   });
 
@@ -362,46 +373,53 @@
     const volumeBarRect = volumeBar.getBoundingClientRect();
 
     volumeProgress.classList.remove("w-full");
-    volumeProgress.style.width = `${Math.round(percentage * volumeBarRect.width)}px`;
+    volumeProgress.style.width = `${Math.round(
+      percentage * volumeBarRect.width
+    )}px`;
     volumeNotch.style.left = `${percentage * 100}%`;
+  };
+
+  const muteTrack = () => {
+    showVolumeBtn(zeroVolumeImg);
+    setVolumeProgress(0);
+    currentTrackToPlay.volume = 0;
+    previousVolumePercentage = currentVolumePercentage;
+    currentVolumePercentage = 0;
+  };
+
+  const revertVolumeToPrevious = () => {
+    currentVolumePercentage = previousVolumePercentage;
+    previousVolumePercentage = 0;
+
+    setVolumeProgress(currentVolumePercentage);
+    currentTrackToPlay.volume = currentVolumePercentage;
+
+    if (currentVolumePercentage > VOLUME_THRESHOLD) {
+      showVolumeBtn(highVolumeImg);
+    } else {
+      showVolumeBtn(lowVolumeImg);
+    }
   };
 
   volumeBtn.addEventListener("click", () => {
     if (currentVolumePercentage > 0) {
-      // mute the song
-      showVolumeBtn(zeroVolumeImg);
-      setVolumeProgress(0);
-      currentTrackToPlay.volume = 0;
-      previousVolumePercentage = currentVolumePercentage;
-      currentVolumePercentage = 0;
-    } else { // set volume to previous volume before muting
-      currentVolumePercentage = previousVolumePercentage;
-      previousVolumePercentage = 0;
-      
-      setVolumeProgress(currentVolumePercentage);
-      currentTrackToPlay.volume = currentVolumePercentage;
-
-      if (currentVolumePercentage > VOLUME_THRESHOLD) {
-        showVolumeBtn(highVolumeImg);
-      } else {
-        showVolumeBtn(lowVolumeImg);
-      }
+      muteTrack();
+    } else {
+      revertVolumeToPrevious();
     }
   });
 
   let isDraggingVolume = false;
 
   const updateVolumeProgress = (e) => {
-    const volumeBarRect = volumeBar.getBoundingClientRect();    
+    const volumeBarRect = volumeBar.getBoundingClientRect();
     const percentage = getProgress(e, volumeBarRect);
-    
-    if(percentage == 0){
+
+    if (percentage == 0) {
       showVolumeBtn(zeroVolumeImg);
-    }
-    else if (percentage > VOLUME_THRESHOLD){
+    } else if (percentage > VOLUME_THRESHOLD) {
       showVolumeBtn(highVolumeImg);
-    }
-    else {
+    } else {
       showVolumeBtn(lowVolumeImg);
     }
     setVolumeProgress(percentage);
@@ -434,5 +452,4 @@
       volumeBar.classList.remove("dragging-volume");
     }
   });
-
 })();
