@@ -68,6 +68,7 @@
     const artistSection = document.getElementById("popular-artists");
     const fragment = document.createDocumentFragment();
 
+    artistSection.innerHTML = null;
     artistData.forEach((artist) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -101,6 +102,7 @@
     const albumSection = document.getElementById("popular-albums");
     const fragment = document.createDocumentFragment();
 
+    albumSection.innerHTML = null;
     albumData.forEach((album) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -134,6 +136,7 @@
     const chartsSection = document.getElementById("featured-charts");
     const fragment = document.createDocumentFragment();
 
+    chartsSection.innerHTML = null;
     chartsData.forEach((chart) => {
       const element = document.createElement("div");
       element.classList.add(
@@ -187,16 +190,17 @@
     loader.style.display = "flex";
 
     await fetch("/tracks")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
+      .then(async (res) => {
+        if (res.status === 500) throw new Error();
+
+        const data = await res.json();
         loader.style.display = "none";
         player.style.display = "flex";
         trackdata = data.items;
         showTrackDetails();
       })
       .catch(() => {
+        loader.innerText = "Failed to get tracks. Please try again later";
         console.error("failed to get tracks");
       });
   };
@@ -207,23 +211,23 @@
   const pauseBtn = document.getElementById("pause-btn");
 
   const showTrackPlayStatus = (statusBtn) => {
-    playBtn.classList.add("hidden")
-    pauseBtn.classList.add("hidden")
-    
+    playBtn.classList.add("hidden");
+    pauseBtn.classList.add("hidden");
+
     statusBtn.classList.remove("hidden");
     statusBtn.classList.add("flex");
-  }
+  };
 
   playBtn?.addEventListener("click", () => {
     if (currentTrackToPlay.src) {
-      showTrackPlayStatus(pauseBtn)
+      showTrackPlayStatus(pauseBtn);
       currentTrackToPlay.play();
     }
   });
 
   pauseBtn?.addEventListener("click", () => {
     if (currentTrackToPlay.src) {
-      showTrackPlayStatus(playBtn)
+      showTrackPlayStatus(playBtn);
       currentTrackToPlay.pause();
     }
   });
@@ -288,7 +292,11 @@
     const elapsedTime = convertSecondsToTime(elapsedTimeInSeconds);
 
     trackElapsedTime.innerText = elapsedTime;
-    currentTrackToPlay.currentTime = percentage * currentTrackToPlay.duration;
+    if (currentTrackToPlay.duration) {
+      currentTrackToPlay.currentTime = percentage * currentTrackToPlay.duration;
+    } else {
+      currentTrackToPlay.currentTime = 0;
+    }
   };
 
   trackBar.addEventListener("click", updateTrackProgress);
@@ -343,8 +351,9 @@
     trackElapsedTime.innerText = `00:00`;
     if (currentTrackId != 0) {
       currentTrackToPlay.play();
+      showTrackPlayStatus(pauseBtn);
     } else {
-      showTrackPlayStatus(playBtn)
+      showTrackPlayStatus(playBtn);
     }
   });
 

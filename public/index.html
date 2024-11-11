@@ -16,21 +16,19 @@
             <img src="assets/music.svg" class="invert" alt="app-icon" />
         </a>
         <section class="absolute-center flex items-center gap-4">
-            <button class="home relative rounded-lg bg-gray-700 flex justify-between border-none m-0 p-3">
+            <button data-tooltip="Home"
+                class="tooltip relative rounded-lg bg-gray-700 flex justify-between border-none m-0 p-3">
                 <img src="assets/home.svg" class="invert" alt="home" />
-                <p class="tooltip">Home</p>
             </button>
             <div class="bg-gray-700 rounded-lg py-3 px-4 justify-center items-center flex gap-4 h-6 w-32 search-bar">
-                <button class="search relative bg-none border-none m-0 p-0">
+                <button data-tooltip="Search" class="tooltip relative bg-none border-none m-0 p-0">
                     <img src="assets/search.svg" class="invert" alt="search" />
-                    <p class="tooltip">Search</p>
                 </button>
                 <input id="search" type="text" placeholder="What do you want to play?"
                     class="p-1 w-full border-none bg-none text-white outline-none text-md" />
-                <button
-                    class="browse relative flex justify-center items-center border-left-2 pl-2 bg-none border-none m-0 p-0">
+                <button data-tooltip="Browse"
+                    class="tooltip relative flex justify-center items-center border-left-2 pl-2 bg-none border-none m-0 p-0">
                     <img src="assets/browse.svg" class="invert" alt="browse" />
-                    <p class="tooltip">Browse</p>
                 </button>
             </div>
 

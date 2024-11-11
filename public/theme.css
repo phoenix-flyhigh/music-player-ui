@@ -1,0 +1,45 @@
+@layer theme;
+
+.bg-black {
+    background-color: #000000;
+}
+
+.bg-white {
+    background-color: var(--white);
+}
+
+.bg-green {
+    background-color: var(--green);
+}
+
+.bg-gray-700 {
+    background-color: #1f1f1f;
+}
+
+.bg-gray-500 {
+    background-color: var(--gray-500);
+}
+
+.bg-gray-900 {
+    background-color: var(--gray-900);
+}
+
+.bg-gradient {
+    background-image: linear-gradient(to bottom, var(--gray-500), var(--gray-900));
+}
+
+.bg-none {
+    background: none;
+} 
+
+.text-gray {
+    color: lightslategray;
+}
+
+.text-lightgray {
+    color: rgb(170, 170, 170);
+}
+
+.text-white {
+    color: var(--white);
+}
