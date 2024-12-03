@@ -53,9 +53,17 @@ a {
     opacity: 1;
 }
 
-.play-btn {
+#play-btn {
     border: none;
     transition: all 0.2s ease-out;
+}
+
+#play-btn:hover {
+    scale: 1.05;
+}
+
+#pause-btn:hover {
+    scale: 1.05;
 }
 
 .player {
@@ -118,6 +126,14 @@ button {
 }
 
 .dragging-track #track-progress {
+    background-color: var(--green);
+}
+
+#volume-btn:hover ~ #volume-bar #volume-notch {
+    opacity: 1;
+}
+
+#volume-btn:hover ~ #volume-bar #volume-progress {
     background-color: var(--green);
 }
 
